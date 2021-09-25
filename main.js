@@ -29,21 +29,16 @@ function activation(index){
     },1500);    
 }
 
-/*
-    문자열 관련 내장함수   
-    원본문자열.split("구분문자");
-    ---> 인수로 받은 구문문자를 기준으로 문자열을 각각 배열로 반환 
-*/
+var speed =  $boxs.css("transition-duration");
+speed = speed.split("s"); // ["1.5", ""];
+speed = speed[0]; //"1.5"
+//speed = parseInt(speed); //정수로 변환된 1
+speed = parseFloat(speed); //실수인 1.5
+speed = speed * 1000; //1500
+console.log(speed);
 
-var text = "apple,strawberry,melon";
-var result = text.split(",");
-console.log(result);
+//미션 3 - 위의 구문을 함수로 변환
+//인수로 duration값을 구할 css선택자를 전달받고 
+//return으로 변환순 숫자값을 내보냄
 
-var text2 = "Andy David Julia";
-var result2 = text2.split(" ");
-console.log(result2);
 
-/*
-미션2 - .right >div의 transition-duration값을 구한뒤 
-1.5s라는 문자에서 s를 제거하고 *1000해서 1500이라는 밀리세컨드 단위로 변경 (함수로 구현)
-*/
