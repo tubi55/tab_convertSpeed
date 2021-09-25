@@ -2,6 +2,8 @@ var $wrap = $("#wrap");
 var $btns = $wrap.find(".left li");
 var $boxs = $wrap.find(".right div");
 var enableClick = true;
+var delay = convertSpeed($boxs);
+
 
 $btns.on("click",function(e){
     e.preventDefault();
@@ -26,19 +28,37 @@ function activation(index){
     
     setTimeout(function(){
         enableClick = true;
-    },1500);    
+    },delay);    
 }
 
-var speed =  $boxs.css("transition-duration");
-speed = speed.split("s"); // ["1.5", ""];
-speed = speed[0]; //"1.5"
-//speed = parseInt(speed); //정수로 변환된 1
-speed = parseFloat(speed); //실수인 1.5
-speed = speed * 1000; //1500
-console.log(speed);
+function convertSpeed(el){
+    var speed =  el.css("transition-duration");
+    speed = speed.split("s"); 
+    speed = speed[0]; 
+    speed = parseFloat(speed); 
+    speed = speed * 1000; 
+    return speed;
+}
 
-//미션 3 - 위의 구문을 함수로 변환
-//인수로 duration값을 구할 css선택자를 전달받고 
-//return으로 변환순 숫자값을 내보냄
+
+/*
+//문자와 숫자가 결합되어 있는 문자열 숫자 형변환
+var speed1 = "1.5s";
+speed1 = parseFloat(speed1);
+console.log(speed1);
+
+
+//숫자형 문자에 곱하기 연산으로 숫자형변환
+var speed2 = "1.5";
+speed2 = speed2 *1000;
+console.log(speed2);
+*/
+
+
+/*
+문자에서 숫자로의 자동 형변환
+1-숫자와 문자가 결합되어 있는 문자에서 parseInt, parseFloat을 쓰면 자동으로 숫자로 형변환
+2- 따옴표로 감싸여있는 숫자형 문자에 곱하기 연산을 하면 자동으로 숫자로 변환
+*/
 
 
