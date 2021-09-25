@@ -1,9 +1,10 @@
 var $wrap = $("#wrap");
 var $btns = $wrap.find(".left li");
 var $boxs = $wrap.find(".right div");
+var $p = $boxs.find("p");
 var enableClick = true;
 var delay = convertSpeed($boxs);
-
+var delay2 = convertSpeed($p);
 
 $btns.on("click",function(e){
     e.preventDefault();
@@ -26,8 +27,20 @@ function activation(index){
     $boxs.removeClass("on");
     $boxs.eq(index).addClass("on");
     
+    //.right div에 on이 붙고나서 transition-duration시간만큼 기달렸다가 
     setTimeout(function(){
-        enableClick = true;
+
+        //p태그 모션 시작
+        $p.removeClass("on");
+        $boxs.eq(index).find("p").addClass("on");
+
+        //p태그의 모션이 시작되고 나서
+        //해당 p요소의 transition-duration시간만큼 기달렸다가
+        setTimeout(function(){   
+            //최종적으로 enableClick값을 true변경해서 다시 이벤트 활성화         
+            enableClick = true;
+        },delay2);
+        
     },delay);    
 }
 
