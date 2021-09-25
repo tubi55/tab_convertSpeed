@@ -1,11 +1,21 @@
-$(".left li").on("click",function(e){
+var $wrap = $("#wrap");
+var $btns = $wrap.find(".left li");
+var $boxs = $wrap.find(".right div");
+
+$btns.on("click",function(e){
     e.preventDefault();
 
+    var isOn = $(this).hasClass("on");
+    if(isOn) return;
+
     var i = $(this).index();
-
-    $(".left li").removeClass("on");
-    $(".left li").eq(i).addClass("on");
-
-    $(".right div").removeClass("on");
-    $(".right div").eq(i).addClass("on");
+    activation(i);    
 });
+
+function activation(index){ 
+    $btns.removeClass("on");
+    $btns.eq(index).addClass("on");
+
+    $boxs.removeClass("on");
+    $boxs.eq(index).addClass("on");
+}
