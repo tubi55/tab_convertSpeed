@@ -23,17 +23,27 @@ function activation(index){
 
     $boxs.removeClass("on");
     $boxs.eq(index).addClass("on");
-
+    
     setTimeout(function(){
         enableClick = true;
-    },4000);
+    },1500);    
 }
 
-/*   
-    특정 시간 만큼 코드 지연시키기
-    setTimeout(실행할 함수, 지연시간);
+/*
+    문자열 관련 내장함수   
+    원본문자열.split("구분문자");
+    ---> 인수로 받은 구문문자를 기준으로 문자열을 각각 배열로 반환 
+*/
 
-    setTimeout(function(){
-        이곳의 구문이 2초 있다 실행됨
-    },2000);
+var text = "apple,strawberry,melon";
+var result = text.split(",");
+console.log(result);
+
+var text2 = "Andy David Julia";
+var result2 = text2.split(" ");
+console.log(result2);
+
+/*
+미션2 - .right >div의 transition-duration값을 구한뒤 
+1.5s라는 문자에서 s를 제거하고 *1000해서 1500이라는 밀리세컨드 단위로 변경 (함수로 구현)
 */
